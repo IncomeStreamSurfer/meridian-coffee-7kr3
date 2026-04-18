@@ -1,0 +1,69 @@
+---
+---
+<form
+  id="subscribe-form"
+  class="w-full max-w-xl"
+  data-endpoint="/api/subscribe"
+>
+  <div class="flex flex-col sm:flex-row gap-4 sm:items-end">
+    <label class="flex-1 block">
+      <span class="eyebrow block mb-2">Email</span>
+      <input
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder="you@somewhere.good"
+        class="ink-input w-full text-lg"
+      />
+    </label>
+    <button type="submit" class="btn-ink whitespace-nowrap">Join the list</button>
+  </div>
+  <p
+    id="subscribe-msg"
+    class="text-sm mt-4 min-h-[1.25rem] font-serif italic"
+    aria-live="polite"
+  ></p>
+</form>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById('subscribe-form');
+    if (!form) return;
+    const msg = document.getElementById('subscribe-msg');
+    const btn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const email = (data.get('email') || '').toString().trim();
+      if (!email) return;
+
+      btn.disabled = true;
+      msg.textContent = 'Sending…';
+      msg.style.color = 'var(--fg-muted)';
+
+      try {
+        const res = await fetch(form.dataset.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const json = await res.json().catch(function () { return {}; });
+        if (!res.ok) {
+          msg.textContent = json.error || 'Something went wrong — try again.';
+          msg.style.color = 'var(--accent)';
+        } else {
+          msg.textContent = 'You\u2019re on the list. Check your inbox.';
+          msg.style.color = 'var(--accent)';
+          form.reset();
+        }
+      } catch (err) {
+        msg.textContent = 'Network hiccup — try again.';
+        msg.style.color = 'var(--accent)';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>

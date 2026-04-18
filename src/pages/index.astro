@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import SubscribeForm from '../components/SubscribeForm.astro';
+
+const year = new Date().getFullYear();
+
+const storyCards = [
+  {
+    label: 'I · Origin',
+    title: 'One lot at a time.',
+    body:
+      'Meridian sources single-origin coffees from farms we have visited, from growers we pay directly. No blends that hide provenance. No commodity grade that wears a fancy bag. Only lots we are proud to put our name against.',
+  },
+  {
+    label: 'II · Craft',
+    title: 'Roasted light. Roasted honest.',
+    body:
+      'We roast on the lighter side of the spectrum to keep the bean\u2019s own character in the cup \u2014 the stone fruit, the florals, the clean acidity. A small drum roaster, slow development, cupped every batch before it leaves.',
+  },
+  {
+    label: 'III · Ritual',
+    title: 'For the slow part of the morning.',
+    body:
+      'Coffee is a daily practice as much as a drink. Meridian is built for the people who grind fresh, who weigh their dose, who sit for ten minutes before the day begins. We make coffee for that ten minutes.',
+  },
+];
+---
+<Base
+  title="Meridian — Specialty Coffee. Launching soon."
+  description="Meridian is a forthcoming specialty coffee house: single-origin lots, roasted light, delivered fresh. Join the list for first access."
+>
+  <div class="relative z-10">
+    <!-- NAV -->
+    <header class="px-6 sm:px-10 py-8 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group" aria-label="Meridian home">
+        <svg width="28" height="28" viewBox="0 0 40 40" fill="none" class="text-app transition-colors group-hover:text-accent" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2" />
+          <path d="M2 20 H38" stroke="currentColor" stroke-width="1.2" />
+          <path d="M20 2 V38" stroke="currentColor" stroke-width="1.2" />
+          <circle cx="20" cy="20" r="3.5" fill="currentColor" />
+        </svg>
+        <span class="font-serif text-xl tracking-tight">Meridian</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <span class="eyebrow hidden sm:inline">Est. 2025 · London</span>
+        <ThemeToggle />
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="px-6 sm:px-10 pt-16 sm:pt-28 pb-20 sm:pb-32 max-w-6xl mx-auto">
+      <div class="eyebrow mb-10">A specialty coffee house · Launching soon</div>
+      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl leading-[1.02] tracking-[-0.02em] max-w-4xl">
+        Coffee for the slow part of the morning.
+      </h1>
+      <p class="mt-10 text-lg sm:text-xl max-w-2xl text-muted leading-relaxed font-serif">
+        Meridian is a small specialty roastery opening in early 2026 — single-origin lots,
+        light development, shipped fresh the week we roast. Leave your email and we&rsquo;ll
+        write when the first release is ready.
+      </p>
+
+      <div class="mt-14">
+        <SubscribeForm />
+        <p class="eyebrow mt-4 opacity-60">No marketing noise. One note when we launch.</p>
+      </div>
+    </section>
+
+    <div class="rule max-w-6xl mx-auto"></div>
+
+    <!-- BRAND STORY -->
+    <section id="story" class="px-6 sm:px-10 py-20 sm:py-28 max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-12 gap-10 md:gap-16">
+        <div class="md:col-span-4">
+          <div class="eyebrow mb-6">The Brand</div>
+          <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05] tracking-[-0.01em]">
+            A meridian is where you stand still and the world turns.
+          </h2>
+        </div>
+        <div class="md:col-span-7 md:col-start-6 space-y-6 text-muted font-serif text-lg leading-relaxed">
+          <p>
+            Meridian began in a kitchen in south London with a used drum roaster, a
+            notebook, and a friend who had spent ten years growing coffee in Huila,
+            Colombia. We were frustrated. Supermarket bags tasted of char. Third-wave
+            bags tasted of marketing. Somewhere in between the honesty of the cup had
+            gone missing.
+          </p>
+          <p>
+            So we built a small roastery around three quiet ideas: buy one lot from one
+            farmer at a time. Roast it so the origin comes through, not the roaster.
+            Ship it the week it was roasted, no sooner and no later.
+          </p>
+          <p>
+            That&rsquo;s the whole pitch. No subscription upsells, no mystery blends, no
+            limited-edition fonts. Just very good coffee, made slowly, for the ten
+            minutes of your day that are yours.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-20 grid md:grid-cols-3 gap-10 sm:gap-16">
+        {storyCards.map((card) => (
+          <article class="border-t border-rule pt-6">
+            <div class="eyebrow mb-3">{card.label}</div>
+            <h3 class="font-serif text-2xl leading-tight mb-4">{card.title}</h3>
+            <p class="text-muted leading-relaxed text-[0.98rem]">{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <div class="rule max-w-6xl mx-auto"></div>
+
+    <!-- FIRST RELEASES -->
+    <section class="px-6 sm:px-10 py-20 sm:py-28 max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
+        <div class="md:col-span-5">
+          <div class="eyebrow mb-6">First Releases</div>
+          <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05] tracking-[-0.01em]">
+            Three lots. One season. Then we start again.
+          </h2>
+          <p class="text-muted font-serif text-lg leading-relaxed mt-8">
+            The opening season will feature three single-origin coffees. When they are
+            gone, they are gone. The next season starts in the cupping room.
+          </p>
+        </div>
+        <div class="md:col-span-7 space-y-10">
+          <div class="flex items-baseline justify-between gap-6 border-b border-rule pb-4">
+            <div>
+              <div class="eyebrow mb-1">No. 001 · Colombia</div>
+              <div class="font-serif text-xl">La Esperanza, Huila · Washed Pink Bourbon</div>
+            </div>
+            <div class="eyebrow">Feb &rsquo;26</div>
+          </div>
+          <div class="flex items-baseline justify-between gap-6 border-b border-rule pb-4">
+            <div>
+              <div class="eyebrow mb-1">No. 002 · Ethiopia</div>
+              <div class="font-serif text-xl">Idido, Yirgacheffe · Natural Heirloom</div>
+            </div>
+            <div class="eyebrow">Mar &rsquo;26</div>
+          </div>
+          <div class="flex items-baseline justify-between gap-6 border-b border-rule pb-4">
+            <div>
+              <div class="eyebrow mb-1">No. 003 · Kenya</div>
+              <div class="font-serif text-xl">Gatomboya, Nyeri · SL28 &middot; SL34</div>
+            </div>
+            <div class="eyebrow">Apr &rsquo;26</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule max-w-6xl mx-auto"></div>
+
+    <!-- CLOSING / SECOND SIGNUP -->
+    <section class="px-6 sm:px-10 py-24 sm:py-32 max-w-4xl mx-auto text-center">
+      <div class="eyebrow mb-6">Join the list</div>
+      <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05] tracking-[-0.01em]">
+        First lot. First letter. First dibs.
+      </h2>
+      <p class="text-muted font-serif text-lg mt-6 max-w-xl mx-auto leading-relaxed">
+        Subscribers get 24 hours of access to the opening release before it goes public,
+        and our field notes from every new farm we visit.
+      </p>
+      <div class="mt-12 flex justify-center">
+        <SubscribeForm />
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="px-6 sm:px-10 py-10 border-t border-rule mt-10">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="eyebrow">&copy; {year} Meridian Coffee &middot; London, UK</div>
+        <div class="eyebrow opacity-70">Site launching early 2026 &middot; Built slowly</div>
+      </div>
+    </footer>
+  </div>
+</Base>
